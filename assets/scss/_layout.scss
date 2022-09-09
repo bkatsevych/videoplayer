@@ -1,8 +1,30 @@
 .container {
-    max-width: 900px;
+    max-width: 750px;
     width: 98%;
+    background: black;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
 
     video {
         width: 100%;
+    }
+}
+
+.wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        bottom: 0;
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        height: calc(100% + 35px);
     }
 }
