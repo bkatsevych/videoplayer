@@ -179,7 +179,7 @@ body {
   background: #2289ff;
 }
 
-.playback-content button:hover ~ .speed-options {
+.playback-content .speed-options.show {
   opacity: 1;
   pointer-events: auto;
 }

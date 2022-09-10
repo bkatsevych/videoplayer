@@ -136,7 +136,7 @@
         }
     }
 
-    button:hover ~ .speed-options {
+    .speed-options.show {
         opacity: 1;
         pointer-events: auto;
     }

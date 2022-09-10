@@ -36,7 +36,7 @@
                             <i class="fa-solid fa-volume-high"></i>
                         </button>
 
-                        <input type="range" />
+                        <input type="range" min="0" max="1" step="any" />
 
                         <div class="video-timer">
                             <p class="current-time">00:00</p>
@@ -46,7 +46,7 @@
                     </li>
                     <li class="options center">
                         <button class="skip-backward">
-                            <i class="fas fa-backward"></i>
+                            <i class="fas fa-arrow-rotate-left"></i>
                         </button>
 
                         <button class="play-pause">
@@ -54,7 +54,7 @@
                         </button>
 
                         <button class="skip-forward">
-                            <i class="fas fa-forward"></i>
+                            <i class="fas fa-arrow-rotate-right"></i>
                         </button>
                     </li>
                     <li class="options right">
@@ -65,11 +65,11 @@
                                 </span>
                             </button>
                             <ul class="speed-options">
-                                <li>2</li>
-                                <li>1.5</li>
-                                <li class="active">Normal</li>
-                                <li>0.75</li>
-                                <li>0.5</li>
+                                <li data-speed="2">2</li>
+                                <li data-speed="1.5">1.5</li>
+                                <li data-speed="1" class="active">Normal</li>
+                                <li data-speed="0.75">0.75</li>
+                                <li data-speed="0.5">0.5</li>
                             </ul>
                         </div>
 
@@ -85,7 +85,7 @@
                     </li>
                 </ul>
             </div>
-            <video src="assets/media/file_example_MP4_1920_18MG.mp4"></video>
+            <video src="assets/media/sample-mp4-file.mp4"></video>
         </div>
         <script src="assets/js/main.js"></script>
     </body>
