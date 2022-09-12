@@ -8,6 +8,7 @@ const volumeBtn = container.querySelector(".volume i");
 const volumeSlider = container.querySelector(".left input");
 const speedBtn = container.querySelector(".playback-speed span");
 const speedOptions = container.querySelector(".speed-options");
+const pipBtn = container.querySelector(".pic-in-pic span");
 
 // Play/pause
 playPauseBtn.addEventListener("click", () => {
@@ -80,4 +81,9 @@ speedOptions.querySelectorAll("li").forEach((option) => {
         speedOptions.querySelector(".active").classList.remove("active");
         option.classList.add("active");
     });
+});
+
+// PiP mode
+pipBtn.addEventListener("click", () => {
+    mainVideo.requestPictureInPicture();
 });
