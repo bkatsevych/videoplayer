@@ -10,6 +10,23 @@ const speedBtn = container.querySelector(".playback-speed span");
 const speedOptions = container.querySelector(".speed-options");
 const pipBtn = container.querySelector(".pic-in-pic span");
 const fullScBtn = container.querySelector(".fullscreen i");
+const videoTimeline = container.querySelector(".video-timeline");
+const currentVidTime = document.querySelector(".current-time");
+
+const formatTime = (time) => {
+    let seconds = Math.floor(time % 60),
+        minutes = Math.floor(time / 60) % 60,
+        hours = Math.floor(time / 3600);
+
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    hours = hours < 10 ? `0${hours}` : hours;
+
+    if (hours == 0) {
+        return `${minutes}:${seconds}`;
+    }
+    return `${hours}:${minutes}:${seconds}`;
+};
 
 // Play/pause
 playPauseBtn.addEventListener("click", () => {
@@ -29,6 +46,13 @@ mainVideo.addEventListener("timeupdate", (e) => {
     let { currentTime, duration } = e.target;
     let ratio = (currentTime / duration) * 100; // % of currentTime from duration
     progressBar.style.width = `${ratio}%`; // displaying respective progress bar width
+    currentVidTime.innerText = formatTime(currentTime);
+});
+
+// update video time on progressbar click
+videoTimeline.addEventListener("click", (e) => {
+    let timelineWidth = videoTimeline.clientWidth;
+    mainVideo.currentTime = (e.offsetX / timelineWidth) * mainVideo.duration;
 });
 
 // Skip backward/forward functionality
