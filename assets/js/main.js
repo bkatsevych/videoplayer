@@ -12,6 +12,7 @@ const pipBtn = container.querySelector(".pic-in-pic span");
 const fullScBtn = container.querySelector(".fullscreen i");
 const videoTimeline = container.querySelector(".video-timeline");
 const currentVidTime = document.querySelector(".current-time");
+const videoDuration = container.querySelector(".video-duration");
 
 const formatTime = (time) => {
     let seconds = Math.floor(time % 60),
@@ -47,6 +48,21 @@ mainVideo.addEventListener("timeupdate", (e) => {
     let ratio = (currentTime / duration) * 100; // % of currentTime from duration
     progressBar.style.width = `${ratio}%`; // displaying respective progress bar width
     currentVidTime.innerText = formatTime(currentTime);
+});
+
+// Display duration on the bar
+mainVideo.addEventListener("loadeddata", (e) => {
+    videoDuration.innerText = formatTime(e.target.duration);
+});
+
+// Display duration by mouse hover
+videoTimeline.addEventListener("mousemove", (e) => {
+    const progressTime = videoTimeline.querySelector("span");
+    let offsetX = e.offsetX;
+    progressTime.style.left = `${offsetX}px`;
+    let timelineWidth = videoTimeline.clientWidth;
+    let percent = (e.offsetX / timelineWidth) * mainVideo.duration;
+    progressTime.innerText = formatTime(percent);
 });
 
 // update video time on progressbar click
