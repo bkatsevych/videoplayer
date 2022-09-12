@@ -14,6 +14,25 @@ const videoTimeline = container.querySelector(".video-timeline");
 const currentVidTime = document.querySelector(".current-time");
 const videoDuration = container.querySelector(".video-duration");
 
+// Autohide
+let timer;
+
+const hideControls = () => {
+    if (mainVideo.paused) return;
+
+    timer = setTimeout(() => {
+        container.classList.remove("show-controls");
+    }, 3000);
+};
+
+hideControls();
+
+container.addEventListener("mousemove", () => {
+    container.classList.add("show-controls");
+    clearTimeout(timer);
+    hideControls();
+});
+
 const formatTime = (time) => {
     let seconds = Math.floor(time % 60),
         minutes = Math.floor(time / 60) % 60,
